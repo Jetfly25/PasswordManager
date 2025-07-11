@@ -1,14 +1,14 @@
-package com.passwordmanager;
+package com.passwordmanager.passwordmanagerlauncher;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HelloController {
+public class LoginController {
 
 	@GetMapping("/")
-	public String index() {
-		return "index.html";
-	}
+    public String login() {
+        return "login";
+    }
 
 }
