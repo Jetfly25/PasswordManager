@@ -7,21 +7,30 @@
 body, html {
     height: 100%;
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    line-height: 1.6;
 }
 
 h2 {
     color: #333;
     font-size: 24px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 a {
     text-decoration: none;
     color: #007bff;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
 }
 
-a:hover {
-    color: #0056b3;
+.button-link:hover,
+.action-link:hover {
+    color: white;
+    background-color: #0056b3;
 }
 
 .page-container {
@@ -29,16 +38,17 @@ a:hover {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 20px;
     background-color: #f4f4f4;
 }
 
 .container {
     background: #fff;
-    padding: 2rem;
+    padding: 3rem 2.5rem;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    max-width: 100%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    max-width: 90%;
 }
 
 form {
@@ -48,15 +58,16 @@ form {
 
 input[type="text"],
 input[type="password"] {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
+    font-size: 15px;
 }
 
 button {
-    padding: 10px;
+    padding: 12px;
+    margin-top: 16px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -74,9 +85,34 @@ button:disabled {
     cursor: not-allowed;
 }
 
-a {
-    color: #007bff;
-    text-align: center;
+button + button {
     margin-top: 10px;
-    font-size: 14px;
+}
+
+.homepage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.homepage-table th,
+.homepage-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    font-size: 15px;
+}
+
+.homepage-table thead {
+    background-color: #007bff;
+    color: white;
+}
+
+.action-link {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.action-link:hover {
+    color: #0056b3;
 }

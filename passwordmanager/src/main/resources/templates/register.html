@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page-container">
+    <div class="container">
+        <h2>Register New Account</h2>
+
+        <div class="note">
+            <p><strong>Password must meet the following requirements:</strong></p>
+            <ul>
+                <li>At least 8 characters</li>
+                <li>At least one number</li>
+                <li>At least one letter</li>
+                <li>At least one special character</li>
+            </ul>
+        </div>
+
+        <p>Enter the following fields to register your account</p>
+
+        <form action="/register" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+
+            <label for="confirmPassword">Verify Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required />
+
+            <div class="button-group">
+                <button type="submit">Register</button>
+                <button type="button" onclick="window.location.href='login.html'">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

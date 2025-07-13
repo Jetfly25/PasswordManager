@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external stylesheet -->
+</head>
+<body>
+<div class="page-container">
+    <div class="container">
+        <h2>Welcome, User!</span></h2>
+        <h3>Your Password Entries</h3>
+        <table class="homepage-table">
+            <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Username</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entry : ${passwordEntries}">
+                <td th:text="${entry.serviceName}"></td>
+                <td th:text="${entry.username}"></td>
+                <td><a th:href="@{/view-password/{id}(id=${entry.id})}">View</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/add-password">Add New Password</a>
+    </div>
+</div>
+</body>
+</html>
