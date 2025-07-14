@@ -1,11 +1,9 @@
 package com.passwordmanager.passwordmanagerlauncher.user;
 
-import jakarta.persistence.*;
 
-@Entity
+
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long ID;
 
     private String username;
