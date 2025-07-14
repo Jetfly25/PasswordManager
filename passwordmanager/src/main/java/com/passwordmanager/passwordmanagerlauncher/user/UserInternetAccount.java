@@ -1,9 +1,14 @@
 package com.passwordmanager.passwordmanagerlauncher.user;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class UserInternetAccount {
     
+    @Id
     private Long ID;
+
     private String URL;
     private String username;
     private String password;

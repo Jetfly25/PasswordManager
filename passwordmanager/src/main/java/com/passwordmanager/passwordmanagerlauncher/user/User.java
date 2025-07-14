@@ -1,9 +1,12 @@
 package com.passwordmanager.passwordmanagerlauncher.user;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-
+@Entity
 public class User {
 
+    @Id
     private Long ID;
 
     private String username;

@@ -13,13 +13,22 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/login", "/home", "/register", "/styles.css").permitAll()
+				.requestMatchers("/login", "/home", "/register", "/styles.css", "/h2-console/**").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
-				.loginPage("/login")
-				.permitAll()
-			);
+                .loginPage("/login")
+                .defaultSuccessUrl("/homepage", true)
+                .permitAll()
+            )
+            .csrf((csrf) -> csrf
+                .ignoringRequestMatchers("/h2-console/**")
+            )
+
+			// This will be removed once completed testing
+			.headers((headers) -> headers
+                .frameOptions().sameOrigin()
+            );
 
 		return http.build();
 	}
