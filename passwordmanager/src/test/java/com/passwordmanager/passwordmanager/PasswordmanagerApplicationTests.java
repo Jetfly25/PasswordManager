@@ -1,9 +1,11 @@
 package com.passwordmanager.passwordmanager;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
-@SpringBootTest
+import com.passwordmanager.passwordmanagerlauncher.PasswordmanagerApplication;
+
+@ContextConfiguration(classes = PasswordmanagerApplication.class)
 class PasswordmanagerApplicationTests {
 
 	@Test
