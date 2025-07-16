@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -13,24 +15,36 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/login", "/home", "/register", "/styles.css", "/h2-console/**").permitAll()
+				// Modify this to only allow login page, authenticate all other pages
+				.requestMatchers("/login", "/register", "/styles.css", "/h2-console/**").permitAll()
 				.anyRequest().authenticated()
 			)
-			.formLogin((form) -> form
+			.formLogin(form -> form
                 .loginPage("/login")
-                .defaultSuccessUrl("/homepage", true)
+                .defaultSuccessUrl("/home", true)
                 .permitAll()
             )
-            .csrf((csrf) -> csrf
-                .ignoringRequestMatchers("/h2-console/**")
-            )
+			.csrf(csrf -> csrf.disable())
+
+			.logout(logout -> logout
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/login")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID")
+			.permitAll()
+)
 
 			// This will be removed once completed testing
 			.headers((headers) -> headers
                 .frameOptions().sameOrigin()
-            );
+            );	
 
 		return http.build();
 	}
-    
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 }
