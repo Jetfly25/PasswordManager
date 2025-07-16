@@ -1,20 +1,23 @@
 package com.passwordmanager.passwordmanagerlauncher.user;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class User {
+public class Users {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
     private String username;
     private String password;
 
-    public User() {}
+    public Users() {}
 
-    public User(String username, String password){
+    public Users(String username, String password){
         this.username = username;
         this.password = password;
     }
