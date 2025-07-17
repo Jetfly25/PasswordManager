@@ -1,12 +1,15 @@
 package com.passwordmanager.passwordmanagerlauncher.user;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class UserInternetAccount {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
 
     private String URL;
