@@ -13,10 +13,11 @@
         <table class="homepage-table">
             <thead>
             <tr>
-                <th>Service Name</th>
+                <th>Website Name</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Actions</th>
+                <th>Copy Password</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -25,6 +26,9 @@
                 <td th:text="${entry.username}"></td>
                 <td th:text="${entry.password}"></td>
                 <td>
+                    <a href="">Copy Password</a>
+                </td>
+                 <td>
                     <a href="#" th:href="@{/delete-password/{id}(id=${entry.ID})}">Delete</a>
                 </td>
             </tr>
@@ -33,7 +37,8 @@
 
         <div class="link-container">
             <a href="/add-password">Add New Password</a>
-            <a href="/change-password">Change Password</a>
+            <a href="/generate-password">Generate New Password</a>
+            <a href="/change-password">Change Main Password</a>
             <a href="/delete-account" class="delete-account">Delete My Account</a>
         </div>
 
