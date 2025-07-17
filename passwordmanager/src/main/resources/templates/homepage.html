@@ -15,6 +15,7 @@
             <tr>
                 <th>Service Name</th>
                 <th>Username</th>
+                <th>Password</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -22,10 +23,20 @@
             <tr th:each="entry : ${accounts}">
                 <td th:text="${entry.URL}"></td>
                 <td th:text="${entry.username}"></td>
+                <td th:text="${entry.password}"></td>
+                <td>
+                    <a href="#" th:href="@{/delete-password/{id}(id=${entry.ID})}">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
-        <a href="/add-password">Add New Password</a>
+
+        <div class="link-container">
+            <a href="/add-password">Add New Password</a>
+            <a href="/change-password">Change Password</a>
+            <a href="/delete-account" class="delete-account">Delete My Account</a>
+        </div>
+
         <form action="/logout" method="post">
             <button type="submit">Logout</button>
         </form>

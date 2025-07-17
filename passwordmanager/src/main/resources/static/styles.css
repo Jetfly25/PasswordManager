@@ -93,6 +93,7 @@ button + button {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    table-layout: fixed;
 }
 
 .homepage-table th,
@@ -101,6 +102,7 @@ button + button {
     border-bottom: 1px solid #ddd;
     text-align: left;
     font-size: 15px;
+    vertical-align: middle;
 }
 
 .homepage-table thead {
@@ -115,4 +117,26 @@ button + button {
 
 .action-link:hover {
     color: #0056b3;
+}
+
+.link-container a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
+
+.link-container a.delete-account {
+    color: red;
+}
+
+.homepage-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+.homepage-table a:hover {
+    text-decoration: underline;
 }
