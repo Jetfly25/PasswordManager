@@ -145,3 +145,31 @@ button + button {
 .homepage-table a:hover {
     text-decoration: underline;
 }
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 17px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.copy-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+}

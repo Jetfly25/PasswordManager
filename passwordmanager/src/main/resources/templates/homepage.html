@@ -9,15 +9,15 @@
 <div class="page-container">
     <div class="container">
         <h2>Welcome, <span th:text="${username}">User</span>!</h2>
-        <h3>Your Password Entries</h3>
+        <h3>Your Saved Passwords</h3>
         <table class="homepage-table">
             <thead>
             <tr>
                 <th>Website Name</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Copy Password</th>
-                <th>Delete</th>
+                <th>Show/Hide Password</th>
+                <th>Delete Password</th>
             </tr>
             </thead>
             <tbody>
@@ -26,10 +26,12 @@
                 <td th:text="${entry.username}"></td>
                 <td th:text="${entry.password}"></td>
                 <td>
-                    <a href="">Copy Password</a>
+                    <button type="submit" class="toggle-password"> Show/Hide Password</button>
                 </td>
-                 <td>
-                    <a href="#" th:href="@{/delete-password/{id}(id=${entry.ID})}">Delete</a>
+                <td>
+                    <form th:action="@{/delete-password/{id}(id=${entry.ID})}" method="post" style="display:inline;">
+                        <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this entry?')">Delete</button>
+                    </form>
                 </td>
             </tr>
             </tbody>
