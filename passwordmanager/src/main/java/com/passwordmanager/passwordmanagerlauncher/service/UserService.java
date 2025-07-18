@@ -5,7 +5,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.passwordmanager.passwordmanagerlauncher.database.UserDatabase;
-import com.passwordmanager.passwordmanagerlauncher.database.UserInternetAccountDatabase;
 import com.passwordmanager.passwordmanagerlauncher.user.Users;
 
 @Service
