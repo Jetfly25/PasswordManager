@@ -18,7 +18,7 @@ public class AuthService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = userDatabase.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User " + username + "not found!"));
+        Users user = userDatabase.findByUsername(username);
 
         return User.builder()
                 .username(user.getUsername())

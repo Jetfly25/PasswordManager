@@ -3,6 +3,7 @@ package com.passwordmanager.passwordmanagerlauncher;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,11 @@ public class UserController {
         return "generate-password";
     }
 
+     @GetMapping("/delete-account")
+    public String deleteAccount() {
+        return "delete-account";
+    }
+
     @PostMapping("/register")
     public String addNewUser(@RequestParam String username, @RequestParam String password){
         Users user = new Users(username, password);
@@ -84,6 +90,16 @@ public class UserController {
     public String deletePassword(@PathVariable("id") Long ID){
         accountService.deletePassword(ID);
         return "redirect:/home";
+    }
+    @PostMapping("/delete-account")
+    public String deleteUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        boolean isDeleted = userService.deleteUser(username);
+        if (isDeleted) {
+            SecurityContextHolder.clearContext();
+            return "redirect:/login";
+        }
+         return "redirect:/error";
     }
 
 }
