@@ -13,18 +13,18 @@ body, html {
 
 h2 {
     color: #333;
-    font-size: 24px;
-    margin-bottom: 1.5rem;
+    font-size: 28px;
+    margin-bottom: 1.2rem;
     text-align: center;
 }
 
 a {
     text-decoration: none;
     color: #007bff;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     display: block;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .button-link:hover,
@@ -44,36 +44,40 @@ a {
 
 .container {
     background: #fff;
-    padding: 3rem 2.5rem;
-    border-radius: 8px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    max-width: 90%;
+    padding: 4rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    width: 700px;
+    max-width: 250%;
+    min-height: 500px;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
 }
 
 input[type="text"],
 input[type="password"] {
-    padding: 12px;
-    margin: 12px 0;
+    padding: 14px;
+    margin-top: 6px;
+    margin-bottom: 12px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 15px;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
 button {
-    padding: 12px;
-    margin-top: 16px;
+    padding: 14px;
+    margin-top: 20px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -86,22 +90,22 @@ button:disabled {
 }
 
 button + button {
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .homepage-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
-    table-layout: fixed;
+    margin-top: 2rem;
+    table-layout: auto;
 }
 
 .homepage-table th,
 .homepage-table td {
-    padding: 12px 16px;
+    padding: 16px 18px;
     border-bottom: 1px solid #ddd;
     text-align: left;
-    font-size: 15px;
+    font-size: 16px;
     vertical-align: middle;
 }
 
@@ -120,7 +124,7 @@ button + button {
 }
 
 .link-container a {
-    margin-right: 15px;
+    margin-right: 20px;
     text-decoration: none;
     color: #007bff;
 }
