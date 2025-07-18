@@ -26,7 +26,7 @@
                 <td th:text="${entry.username}"></td>
                 <td th:text="${entry.password}"></td>
                 <td>
-                    <button type="submit" class="toggle-password"> Show/Hide Password</button>
+                    <button type="submit" class="toggle-password"> Show Password</button>
                 </td>
                 <td>
                     <form th:action="@{/delete-password/{id}(id=${entry.ID})}" method="post" style="display:inline;">

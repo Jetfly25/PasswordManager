@@ -8,7 +8,7 @@ body, html {
     height: 100%;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    line-height: 1.6;
+    line-height: 1.2;
 }
 
 h2 {
@@ -18,6 +18,22 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 a {
     text-decoration: none;
     color: #007bff;
@@ -25,6 +41,14 @@ a {
     text-align: center;
     display: block;
     margin-top: 1.5rem;
+}
+
+.note {
+    text-indent: 125px;
+}
+
+ul {
+    list-style: none;
 }
 
 .button-link:hover,
@@ -51,6 +75,8 @@ a {
     max-width: 250%;
     min-height: 500px;
     overflow-y: auto;
+    justify-content: space-between; /* Ensures the buttons are spaced correctly */
+    gap: 10px; /* Small gap between the buttons */
 }
 
 form {
@@ -70,7 +96,7 @@ input[type="password"] {
 }
 
 button {
-    padding: 14px;
+    padding: 12px 24px;
     margin-top: 20px;
     background-color: #007bff;
     color: white;
@@ -150,26 +176,20 @@ button + button {
     background-color: red;
     color: white;
     border: none;
-    padding: 17px 25px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 8px;
+    padding: 21px 25px;
 }
 
 .delete-button:hover {
     background-color: darkred;
 }
 
-.copy-button {
+.toggle-password {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 8px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 8px;
+    padding: 10px 15px;
 }
 
-.copy-button:hover {
+.toggle-password:hover {
     background-color: #0056b3;
 }
