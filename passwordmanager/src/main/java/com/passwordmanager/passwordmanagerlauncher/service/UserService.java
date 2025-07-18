@@ -28,4 +28,23 @@ public class UserService {
         }
         return false;
     }
+
+    public boolean changePassword(String username, String oldPassword, String newPassword, String confirmPassword) {
+        Users user = userDatabase.findByUsername(username);
+        if (user != null) {
+            if (encoder.matches(oldPassword, user.getPassword())) {
+                if (newPassword.equals(confirmPassword)) {
+                    String encodedPassword = encoder.encode(newPassword);
+                    user.setPassword(encodedPassword);
+                    userDatabase.save(user);
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
 }

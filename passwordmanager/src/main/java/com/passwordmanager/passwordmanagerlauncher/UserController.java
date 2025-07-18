@@ -65,6 +65,11 @@ public class UserController {
         return "delete-account";
     }
 
+    @GetMapping("/change-password")
+    public String changePassword() {
+        return "change-password";
+    }
+
     @PostMapping("/register")
     public String addNewUser(@RequestParam String username, @RequestParam String password){
         Users user = new Users(username, password);
@@ -79,7 +84,7 @@ public class UserController {
         return "redirect:/home";
     }
     @PostMapping("/generate-new-password")
-    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, Model model) {
+    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial) {
         String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
         accountService.addPassword(entry);
@@ -100,6 +105,17 @@ public class UserController {
             return "redirect:/login";
         }
          return "redirect:/error";
+    }
+
+    @PostMapping("/change-password")
+    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        boolean isPasswordChanged = userService.changePassword(username, oldPassword, newPassword, confirmPassword);
+        if (isPasswordChanged) {
+            return "redirect:/home";
+        } else {
+            return "change-password";
+        }
     }
 
 }
