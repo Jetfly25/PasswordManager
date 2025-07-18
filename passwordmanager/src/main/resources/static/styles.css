@@ -44,15 +44,14 @@ a {
 }
 
 .note {
-    text-indent: 125px;
+    text-indent: 90px;
 }
 
 ul {
     list-style: none;
 }
 
-.button-link:hover,
-.action-link:hover {
+.button-link:hover {
     color: white;
     background-color: #0056b3;
 }
@@ -75,8 +74,6 @@ ul {
     max-width: 250%;
     min-height: 500px;
     overflow-y: auto;
-    justify-content: space-between; /* Ensures the buttons are spaced correctly */
-    gap: 10px; /* Small gap between the buttons */
 }
 
 form {
@@ -105,6 +102,7 @@ button {
     cursor: pointer;
     font-size: 18px;
     transition: background-color 0.3s ease;
+
 }
 
 button:hover {
@@ -118,6 +116,11 @@ button:disabled {
 
 button + button {
     margin-top: 12px;
+}
+
+.button-group {
+    margin: 0 auto;
+    display: block;
 }
 
 .homepage-table {
@@ -144,10 +147,6 @@ button + button {
 .action-link {
     color: #007bff;
     font-weight: bold;
-}
-
-.action-link:hover {
-    color: #0056b3;
 }
 
 .link-container a {
@@ -192,4 +191,11 @@ button + button {
 
 .toggle-password:hover {
     background-color: #0056b3;
+}
+
+.cancel-button {
+    background-color: red;
+    color: white;
+    border: none;
+    margin-left: 20px;
 }
