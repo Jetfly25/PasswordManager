@@ -50,6 +50,7 @@ a {
     width: 700px;
     max-width: 250%;
     min-height: 500px;
+    overflow-y: auto;
 }
 
 form {

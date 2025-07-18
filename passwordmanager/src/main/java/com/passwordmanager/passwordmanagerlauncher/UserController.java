@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.passwordmanager.passwordmanagerlauncher.service.GeneratePassword;
 import com.passwordmanager.passwordmanagerlauncher.service.UserInternetAccountService;
 import com.passwordmanager.passwordmanagerlauncher.service.UserService;
 import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
@@ -22,6 +23,9 @@ public class UserController {
 
     @Autowired
     private UserInternetAccountService accountService;
+
+    @Autowired
+    private GeneratePassword generatePassword;
 
     @GetMapping("/")
     public String homeRedirect() {
@@ -49,6 +53,11 @@ public class UserController {
         return "add-password";
     }
 
+    @GetMapping("/generate-password")
+    public String generatePassword() {
+        return "generate-password";
+    }
+
     @PostMapping("/register")
     public String addNewUser(@RequestParam String username, @RequestParam String password){
         Users user = new Users(username, password);
@@ -58,6 +67,13 @@ public class UserController {
 
     @PostMapping ("/save-password")
     public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password) {
+        UserInternetAccount entry = new UserInternetAccount(URL, username, password);
+        accountService.addPassword(entry);
+        return "redirect:/home";
+    }
+    @PostMapping("/generate-new-password")
+    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, Model model) {
+        String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
         accountService.addPassword(entry);
         return "redirect:/home";
