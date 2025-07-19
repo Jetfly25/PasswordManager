@@ -17,6 +17,8 @@ import com.passwordmanager.passwordmanagerlauncher.service.UserService;
 import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
 import com.passwordmanager.passwordmanagerlauncher.user.Users;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 
@@ -70,6 +72,21 @@ public class UserController {
         return "change-password";
     }
 
+    @GetMapping("/view-password")
+    public String viewPassword(HttpSession session, Model model) {
+        UserInternetAccount entry = (UserInternetAccount) session.getAttribute("currentEntry");
+        if (entry == null) {
+            return "redirect:/home";
+        }
+        model.addAttribute("entry", entry);
+        return "view-password";
+    }
+
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
+    }
+
     @PostMapping("/register")
     public String addNewUser(@RequestParam String username, @RequestParam String password){
         Users user = new Users(username, password);
@@ -116,6 +133,13 @@ public class UserController {
         } else {
             return "change-password";
         }
+    }
+
+    @PostMapping("/view-password")
+    public String viewUserAccountPassword(@RequestParam String URL, HttpSession session) {
+        UserInternetAccount entry = accountService.getPasswordEntryByURL(URL);
+        session.setAttribute("currentEntry", entry);
+        return "redirect:/view-password";
     }
 
 }

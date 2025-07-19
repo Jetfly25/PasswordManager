@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 <div class="page-container">
-    <div class="container">
+    <div class="container" style="position: relative;">
+        <a href="/about">
+            <div class="info-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+        </a>
         <h2>Welcome, <span th:text="${username}">User</span>!</h2>
         <h3>Your Saved Passwords</h3>
+
         <table class="homepage-table">
             <thead>
             <tr>
                 <th>Website Name</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Show/Hide Password</th>
+                <th>Show Details</th>
                 <th>Delete Password</th>
             </tr>
             </thead>
@@ -24,9 +32,14 @@
             <tr th:each="entry : ${accounts}">
                 <td th:text="${entry.URL}"></td>
                 <td th:text="${entry.username}"></td>
-                <td th:text="${entry.password}"></td>
                 <td>
-                    <button type="submit" class="toggle-password"> Show Password</button>
+                    <input id="password-${entry.id}" type="password" th:value="${entry.password}" readonly />
+                </td>
+                <td>
+                    <form th:action="@{/view-password}" method="post" style="display:inline;">
+                        <input type="hidden" name="URL" th:value="${entry.URL}" />
+                        <button type="submit" class="toggle-password"> Show Password</button>
+                    </form>
                 </td>
                 <td>
                     <form th:action="@{/delete-password/{id}(id=${entry.ID})}" method="post" style="display:inline;">

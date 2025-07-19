@@ -29,4 +29,11 @@ public class UserInternetAccountService {
             accountDatabase.delete(passwordEntry.get());
         }
     }
+    public UserInternetAccount getPasswordByID(Long ID){
+        return accountDatabase.findById(ID).orElse(null);
+    }
+
+    public UserInternetAccount getPasswordEntryByURL(String URL) {
+        return accountDatabase.findByURL(URL);
+    }
 }
