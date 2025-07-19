@@ -203,6 +203,10 @@ button + button {
     margin-left: 20px;
 }
 
+.cancel-button:hover{
+    background-color: darkred;
+}
+
 .info-icon {
     position: absolute;
     top: 20px;
