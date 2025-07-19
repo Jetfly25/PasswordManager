@@ -1,4 +1,4 @@
-package com.passwordmanager.passwordmanagerlauncher;
+package com.passwordmanager.passwordmanagerlauncher.controller;
 
 import java.security.Principal;
 
