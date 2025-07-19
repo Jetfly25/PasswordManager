@@ -12,6 +12,9 @@ public class UserService {
     
     @Autowired
     private UserDatabase userDatabase;
+
+    @Autowired
+    private UserInternetAccountService accountService;
     
     @Autowired
     private PasswordEncoder encoder;
@@ -23,6 +26,7 @@ public class UserService {
     public boolean deleteUser(String username) {
         Users user = userDatabase.findByUsername(username);
         if (user != null) {
+            accountService.removeAllPasswords();
             userDatabase.delete(user);
             return true;
         }
