@@ -44,12 +44,8 @@ a {
     margin-top: 1.5rem;
 }
 
-.note {
-    text-indent: 90px;
-}
-
 ul {
-    list-style: none;
+    margin-left: 220px;
 }
 
 .button-link:hover {
@@ -245,8 +241,8 @@ button + button {
 }
 
 hr.rounded {
-  border-top: 8px solid #575757;
-  border-radius: 5px;
-  margin-top: 35px;
-  margin-bottom: 20px;
+    border-top: 8px solid #575757;
+    border-radius: 5px;
+    margin-top: 35px;
+    margin-bottom: 20px;
 }
