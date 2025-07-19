@@ -33,7 +33,7 @@
                 <td th:text="${entry.URL}"></td>
                 <td th:text="${entry.username}"></td>
                 <td>
-                    <input id="password-${entry.id}" type="password" th:value="${entry.password}" readonly />
+                    <span>**********</span>
                 </td>
                 <td>
                     <form th:action="@{/view-password}" method="post" style="display:inline;">
@@ -50,15 +50,23 @@
             </tbody>
         </table>
 
-        <div class="link-container">
-            <a href="/add-password">Add New Password</a>
-            <a href="/generate-password">Generate New Password</a>
-            <a href="/change-password">Change Main Password</a>
-            <a href="/delete-account" class="delete-account">Delete My Account</a>
-        </div>
+        <hr class="rounded">
+        <p style="margin-bottom: 2px;"><strong>Options:</strong></p>
 
+        <form action="/add-password">
+            <button type"submit"> Add New Password</button>
+        </form>
+        <form action="/generate-password">
+            <button type"submit"> Generate New Password</button>
+        </form>
+        <form action="/change-password">
+            <button type"submit"> Change Main Password</button>
+        </form>
+        <form action="/delete-account">
+            <button type"submit" class="delete-account-button"> Delete My Account</button>
+        </form>
         <form action="/logout" method="post">
-            <button type="submit">Logout</button>
+            <button type="submit" class="logout-button">Logout</button>
         </form>
     </div>
 </div>

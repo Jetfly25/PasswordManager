@@ -172,6 +172,16 @@ button + button {
     text-decoration: underline;
 }
 
+.delete-account-button{
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+.delete-account-button:hover {
+    background-color: darkred;
+}
+
 .delete-button {
     background-color: red;
     color: white;
@@ -224,4 +234,19 @@ button + button {
 .info-icon:hover {
     background-color: #007bff;
     color: white;
+}
+
+.logout-button{
+    position: absolute;
+    top: 2px;
+    right: 20px;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+hr.rounded {
+  border-top: 8px solid #575757;
+  border-radius: 5px;
+  margin-top: 35px;
+  margin-bottom: 20px;
 }
