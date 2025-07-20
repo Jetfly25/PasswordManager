@@ -104,41 +104,51 @@ public class UserController {
     }
 
     @PostMapping ("/save-password")
-    public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password) throws Exception {
+    public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes) throws Exception {
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
         accountService.addPassword(entry);
+        redirectAttributes.addFlashAttribute("status", "success");
+        redirectAttributes.addFlashAttribute("message", "Successfully saved new password!");
         return "redirect:/home";
     }
     @PostMapping("/generate-new-password")
-    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial) throws Exception {
+    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, RedirectAttributes redirectAttributes) throws Exception {
         String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
         accountService.addPassword(entry);
+        redirectAttributes.addFlashAttribute("status", "success");
+        redirectAttributes.addFlashAttribute("message", "Successfully generated new password!");
         return "redirect:/home";
     }
 
     @PostMapping("/delete-password/{id}")
-    public String deletePassword(@PathVariable("id") Long ID){
+    public String deletePassword(@PathVariable("id") Long ID, RedirectAttributes redirectAttributes){
         accountService.deletePassword(ID);
+        redirectAttributes.addFlashAttribute("status", "success");
+        redirectAttributes.addFlashAttribute("message", "Successfully deleted saved password!");
         return "redirect:/home";
     }
     @PostMapping("/delete-account")
-    public String deleteUser() {
+    public String deleteUser(RedirectAttributes redirectAttributes) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean isDeleted = userService.deleteUser(username);
         if (isDeleted) {
             SecurityContextHolder.clearContext();
+            redirectAttributes.addFlashAttribute("status", "success");
+            redirectAttributes.addFlashAttribute("message", "Successfully deleted account!");
             return "redirect:/login";
         }
          return "redirect:/error";
     }
 
     @PostMapping("/change-password")
-    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword) {
+    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, @RequestParam("confirmPassword") String confirmPassword, RedirectAttributes redirectAttributes) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         boolean isPasswordChanged = userService.changePassword(username, oldPassword, newPassword, confirmPassword);
         if (isPasswordChanged) {
-            return "redirect:/home";
+            redirectAttributes.addFlashAttribute("status", "success");
+            redirectAttributes.addFlashAttribute("message", "Successfully Changed Password!");
+            return "redirect:/login";
         } else {
             return "change-password";
         }
