@@ -150,7 +150,9 @@ public class UserController {
             redirectAttributes.addFlashAttribute("message", "Successfully Changed Password!");
             return "redirect:/login";
         } else {
-            return "change-password";
+            redirectAttributes.addFlashAttribute("status", "error");
+            redirectAttributes.addFlashAttribute("message", "The old password entered does not match the password in our database!");
+            return "redirect:/change-password";
         }
     }
 
