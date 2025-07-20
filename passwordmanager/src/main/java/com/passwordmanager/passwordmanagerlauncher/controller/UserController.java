@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.passwordmanager.passwordmanagerlauncher.service.Encryption;
 import com.passwordmanager.passwordmanagerlauncher.service.GeneratePassword;
 import com.passwordmanager.passwordmanagerlauncher.service.UserInternetAccountService;
 import com.passwordmanager.passwordmanagerlauncher.service.UserService;
@@ -95,13 +96,13 @@ public class UserController {
     }
 
     @PostMapping ("/save-password")
-    public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password) {
+    public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password) throws Exception {
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
         accountService.addPassword(entry);
         return "redirect:/home";
     }
     @PostMapping("/generate-new-password")
-    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial) {
+    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial) throws Exception {
         String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
         accountService.addPassword(entry);
@@ -136,8 +137,10 @@ public class UserController {
     }
 
     @PostMapping("/view-password")
-    public String viewUserAccountPassword(@RequestParam String URL, HttpSession session) {
+    public String viewUserAccountPassword(@RequestParam String URL, HttpSession session) throws Exception {
         UserInternetAccount entry = accountService.getPasswordEntryByURL(URL);
+        String decryptedPassword = Encryption.decryptPassword(entry.getPassword());
+        entry.setPassword(decryptedPassword);
         session.setAttribute("currentEntry", entry);
         return "redirect:/view-password";
     }

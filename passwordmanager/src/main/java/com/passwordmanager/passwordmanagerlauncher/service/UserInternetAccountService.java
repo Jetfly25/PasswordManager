@@ -15,7 +15,9 @@ public class UserInternetAccountService {
     @Autowired
     private UserInternetAccountDatabase accountDatabase;
 
-    public void addPassword(UserInternetAccount account){
+    public void addPassword(UserInternetAccount account) throws Exception {
+        String encryptedPassword = Encryption.encryptPassword(account.getPassword());
+        account.setPassword(encryptedPassword);
         accountDatabase.save(account);
     }
 
