@@ -246,3 +246,15 @@ hr.rounded {
     margin-top: 35px;
     margin-bottom: 20px;
 }
+
+.indicator {
+    margin-bottom: 8px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    display: block;
+}

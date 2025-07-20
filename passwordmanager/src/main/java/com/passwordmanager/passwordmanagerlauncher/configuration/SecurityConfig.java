@@ -15,8 +15,8 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				// Modify this to only allow login page, authenticate all other pages
-				.requestMatchers("/login", "/register", "/styles.css", "/h2-console/**").permitAll()
+				// Modify this to only allow login html page, authenticate all other pages
+				.requestMatchers("/login", "/styles.css", "/h2-console/**", "/passwordValidator.js").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin(form -> form
