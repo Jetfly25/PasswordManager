@@ -20,6 +20,14 @@ public class AuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users user = userDatabase.findByUsername(username);
 
+        if (user == null){
+            return User.builder()
+                .username("guest")
+                .password("")
+                .roles("GUEST")
+                .build();
+        }
+
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
