@@ -17,11 +17,12 @@
                 <li>At least one number</li>
                 <li>At least one letter</li>
                 <li>At least one special character</li>
+                <li>Must not contain spaces</li>
             </ul>
         </div>
 
         <p><strong>Enter the following fields to register your account:</strong></p>
-        
+
         <div th:if="${status == 'error'}" class="failure-message" th:text="${message}"></div>
 
         <form action="/register" method="post">
