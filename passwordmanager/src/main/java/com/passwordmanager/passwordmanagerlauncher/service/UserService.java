@@ -23,6 +23,11 @@ public class UserService {
         user.setPassword(encoder.encode(user.getPassword()));
         userDatabase.save(user);
     }
+
+     public boolean isUsernameTaken(String username) {
+        return userDatabase.existsByUsername(username);
+    }
+
     public boolean deleteUser(String username) {
         Users user = userDatabase.findByUsername(username);
         if (user != null) {

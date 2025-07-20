@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.passwordmanager.passwordmanagerlauncher.service.Encryption;
 import com.passwordmanager.passwordmanagerlauncher.service.GeneratePassword;
@@ -89,9 +90,16 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String addNewUser(@RequestParam String username, @RequestParam String password){
+    public String addNewUser(@RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes){
         Users user = new Users(username, password);
+        if (userService.isUsernameTaken(user.getUsername())) {
+            redirectAttributes.addFlashAttribute("status", "error");
+            redirectAttributes.addFlashAttribute("message", "Username already exists, try another one!");
+            return "redirect:/register";
+        }
         userService.registerUser(user);
+        redirectAttributes.addFlashAttribute("status", "success");
+        redirectAttributes.addFlashAttribute("message", "Successfully Created Account!");
         return "redirect:/login";
     }
 

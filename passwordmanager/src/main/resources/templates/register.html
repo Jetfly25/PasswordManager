@@ -21,6 +21,8 @@
         </div>
 
         <p><strong>Enter the following fields to register your account:</strong></p>
+        
+        <div th:if="${status == 'error'}" class="failure-message" th:text="${message}"></div>
 
         <form action="/register" method="post">
             <label for="username">Username:</label>

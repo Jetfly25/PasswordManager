@@ -9,6 +9,12 @@
 <div class="page-container">
     <div class="container">
         <h2>Welcome to Password Manager V2.0!</h2>
+        
+        <div th:if="${param.error}" class="error-message">
+            <p style="color: red;"><Strong>Username or Password is Incorrect!</Strong></p>
+        </div>
+        <div th:if="${status == 'success'}" class="success-message" th:text="${message}"></div>
+        
         <form action="/login" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Username" required />
