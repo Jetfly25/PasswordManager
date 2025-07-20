@@ -248,7 +248,7 @@ hr.rounded {
 }
 
 .indicator {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
@@ -256,7 +256,6 @@ hr.rounded {
     font-weight: bold;
     color: white;
     width: 100%;
-    display: block;
 }
 
 .failure-message{
