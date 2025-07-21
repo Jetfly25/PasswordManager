@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class UserInternetAccount {
@@ -15,6 +16,9 @@ public class UserInternetAccount {
     private String URL;
     private String username;
     private String password;
+
+    @ManyToOne
+    private Users user;
 
     public UserInternetAccount() {}
 
@@ -54,5 +58,13 @@ public class UserInternetAccount {
 
     public void setURL(String URL){
         this.URL = URL;
+    }
+
+    public Users getUser(){
+        return user;
+    }
+
+    public void setUser(Users user){
+        this.user = user;
     }
 }

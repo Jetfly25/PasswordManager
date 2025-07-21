@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.passwordmanager.passwordmanagerlauncher.database.UserDatabase;
 import com.passwordmanager.passwordmanagerlauncher.database.UserInternetAccountDatabase;
 import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
+import com.passwordmanager.passwordmanagerlauncher.user.Users;
 import com.passwordmanager.passwordmanagerlauncher.util.Encryption;
 
 @Service
@@ -16,8 +18,13 @@ public class UserInternetAccountService {
     @Autowired
     private UserInternetAccountDatabase accountDatabase;
 
-    public void addPassword(UserInternetAccount account) throws Exception {
+    @Autowired
+    private UserDatabase userDatabase;
+
+    public void addPassword(UserInternetAccount account, String username) throws Exception {
+        Users user = userDatabase.findByUsername(username);
         String encryptedPassword = Encryption.encryptPassword(account.getPassword());
+        account.setUser(user);
         account.setPassword(encryptedPassword);
         accountDatabase.save(account);
     }
@@ -45,5 +52,8 @@ public class UserInternetAccountService {
         for (UserInternetAccount entry : accounts){
             accountDatabase.delete(entry);
         }
+    }
+    public List<UserInternetAccount> getEntriesForUser(String username) {
+        return accountDatabase.findByUser_Username(username);
     }
 }

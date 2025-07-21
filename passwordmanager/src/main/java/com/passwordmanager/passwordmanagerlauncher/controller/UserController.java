@@ -49,8 +49,9 @@ public class UserController {
     }
     @GetMapping("/home")
     public String home(Model model, Principal principal) {
-        model.addAttribute("accounts", accountService.getAllEntries());
-        model.addAttribute("username", principal.getName());
+        String username = principal.getName();
+        model.addAttribute("accounts", accountService.getEntriesForUser(username));
+        model.addAttribute("username", username);
         return "homepage";
     }
 
@@ -104,18 +105,18 @@ public class UserController {
     }
 
     @PostMapping ("/save-password")
-    public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes) throws Exception {
+    public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes, Principal principal) throws Exception {
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
-        accountService.addPassword(entry);
+        accountService.addPassword(entry, principal.getName());
         redirectAttributes.addFlashAttribute("status", "success");
         redirectAttributes.addFlashAttribute("message", "Successfully saved new password!");
         return "redirect:/home";
     }
     @PostMapping("/generate-new-password")
-    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, RedirectAttributes redirectAttributes) throws Exception {
+    public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, RedirectAttributes redirectAttributes, Principal principal) throws Exception {
         String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
-        accountService.addPassword(entry);
+        accountService.addPassword(entry, principal.getName());
         redirectAttributes.addFlashAttribute("status", "success");
         redirectAttributes.addFlashAttribute("message", "Successfully generated new password!");
         return "redirect:/home";
