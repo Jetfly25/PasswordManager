@@ -3,7 +3,6 @@ package com.passwordmanager.passwordmanagerlauncher.service;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Base64;
-import java.util.Random;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -14,7 +13,7 @@ public class Encryption {
     private static final String ALGORITHM = "AES";
     private static final String CIPHER_TRANSFORM = "AES/CBC/PKCS5Padding";
     private static final int IV_SIZE = 16;
-    private static final String SECRET_KEY = generateRandomKey();
+    private static final String SECRET_KEY = "THISISASECUREKEY"; // Arbitrary key for dev purposes, but would be securely stored in the cloud elsewhere in app production
 
     public static String encryptPassword(String password) throws Exception {
         byte[] iv = new byte[IV_SIZE];
@@ -51,19 +50,5 @@ public class Encryption {
         byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
 
         return new String(decryptedBytes, StandardCharsets.UTF_8);
-    }
-
-    public static String generateRandomKey(){
-        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        StringBuilder builder = new StringBuilder();
-        Random rand = new Random();
-        int length = 16;
-        for (int i = 0; i < length; i++){
-            int index = rand.nextInt(alphabet.length());
-            char randomChar = alphabet.charAt(index);
-            
-            builder.append(randomChar);
-        }
-        return builder.toString();
     }
 }
