@@ -62,3 +62,6 @@ function validatePassword() {
         registerButton.disabled = false;
     }
 }
+
+document.getElementById("password").addEventListener("input", validatePassword);
+document.getElementById("confirmPassword").addEventListener("input", validatePassword);
