@@ -1,4 +1,4 @@
-package com.passwordmanager.passwordmanagerlauncher.service;
+package com.passwordmanager.passwordmanagerlauncher.util;
 import java.security.SecureRandom;
 
 import org.springframework.stereotype.Service;

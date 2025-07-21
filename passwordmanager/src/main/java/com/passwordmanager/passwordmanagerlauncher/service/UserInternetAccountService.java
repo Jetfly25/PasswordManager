@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.passwordmanager.passwordmanagerlauncher.database.UserInternetAccountDatabase;
 import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
+import com.passwordmanager.passwordmanagerlauncher.util.Encryption;
 
 @Service
 public class UserInternetAccountService {

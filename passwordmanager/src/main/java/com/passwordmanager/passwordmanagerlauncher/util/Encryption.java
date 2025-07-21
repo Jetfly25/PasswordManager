@@ -1,4 +1,4 @@
-package com.passwordmanager.passwordmanagerlauncher.service;
+package com.passwordmanager.passwordmanagerlauncher.util;
 
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;

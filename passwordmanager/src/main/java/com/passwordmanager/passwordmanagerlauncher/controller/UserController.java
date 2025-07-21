@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.passwordmanager.passwordmanagerlauncher.service.Encryption;
-import com.passwordmanager.passwordmanagerlauncher.service.GeneratePassword;
 import com.passwordmanager.passwordmanagerlauncher.service.UserInternetAccountService;
 import com.passwordmanager.passwordmanagerlauncher.service.UserService;
 import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
 import com.passwordmanager.passwordmanagerlauncher.user.Users;
+import com.passwordmanager.passwordmanagerlauncher.util.Encryption;
+import com.passwordmanager.passwordmanagerlauncher.util.GeneratePassword;
 
 import jakarta.servlet.http.HttpSession;
 
