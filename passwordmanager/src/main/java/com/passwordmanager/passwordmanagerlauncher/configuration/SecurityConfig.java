@@ -15,8 +15,7 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				// Modify this to only allow login html page, authenticate all other pages
-				.requestMatchers("/login", "/register", "/styles.css", "/h2-console/**", "/passwordValidator.js").permitAll()
+				.requestMatchers("/login", "/register", "/styles.css", "/h2-console/**").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin(form -> form
@@ -32,7 +31,7 @@ public class SecurityConfig{
 			.invalidateHttpSession(true)
 			.deleteCookies("JSESSIONID")
 			.permitAll()
-)
+			)
 
 			// This will be removed once completed testing
 			.headers((headers) -> headers
