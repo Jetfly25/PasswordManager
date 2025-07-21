@@ -34,9 +34,9 @@ public class UserController {
     private GeneratePassword generatePassword;
 
     @GetMapping("/")
-    public String homeRedirect() {
-        return "redirect:/home";
-}
+    public String loginRedirect() {
+        return "redirect:/login";
+    }
 
 	@GetMapping("/login")
     public String login() {
