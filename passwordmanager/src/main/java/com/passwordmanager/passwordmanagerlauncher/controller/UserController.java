@@ -107,7 +107,12 @@ public class UserController {
     @PostMapping ("/save-password")
     public String savePassword(@RequestParam String URL, @RequestParam String username, @RequestParam String password, RedirectAttributes redirectAttributes, Principal principal) throws Exception {
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
-        accountService.addPassword(entry, principal.getName());
+        boolean success = accountService.addPassword(entry, principal.getName());
+        if (!success){
+            redirectAttributes.addFlashAttribute("status", "error");
+            redirectAttributes.addFlashAttribute("message", "That URL/Website name is already saved!");
+            return "redirect:/add-password";
+        }
         redirectAttributes.addFlashAttribute("status", "success");
         redirectAttributes.addFlashAttribute("message", "Successfully saved new password!");
         return "redirect:/home";
@@ -116,6 +121,12 @@ public class UserController {
     public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, RedirectAttributes redirectAttributes, Principal principal) throws Exception {
         String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
         UserInternetAccount entry = new UserInternetAccount(URL, username, password);
+        boolean success = accountService.addPassword(entry, principal.getName());
+        if (!success){
+            redirectAttributes.addFlashAttribute("status", "error");
+            redirectAttributes.addFlashAttribute("message", "That URL/Website name is already saved!");
+            return "redirect:/generate-password";
+        }
         accountService.addPassword(entry, principal.getName());
         redirectAttributes.addFlashAttribute("status", "success");
         redirectAttributes.addFlashAttribute("message", "Successfully generated new password!");

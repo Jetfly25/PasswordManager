@@ -9,4 +9,5 @@ import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
 public interface UserInternetAccountDatabase extends JpaRepository<UserInternetAccount, Long>{
     UserInternetAccount findByURLAndUser_Username(String URL, String username);
     List<UserInternetAccount> findByUser_Username(String username);
+    boolean existsByURLAndUser_Username(String URL, String username);
 }

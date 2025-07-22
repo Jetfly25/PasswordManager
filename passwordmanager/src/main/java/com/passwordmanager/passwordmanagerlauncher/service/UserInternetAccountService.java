@@ -21,12 +21,16 @@ public class UserInternetAccountService {
     @Autowired
     private UserDatabase userDatabase;
 
-    public void addPassword(UserInternetAccount account, String username) throws Exception {
+    public boolean addPassword(UserInternetAccount account, String username) throws Exception {
         Users user = userDatabase.findByUsername(username);
         String encryptedPassword = Encryption.encryptPassword(account.getPassword());
         account.setUser(user);
+        if (isDuplicateURL(account.getURL(), username)){
+            return false;
+        }
         account.setPassword(encryptedPassword);
         accountDatabase.save(account);
+        return true;
     }
 
     public List<UserInternetAccount> getAllEntries() {
@@ -55,5 +59,9 @@ public class UserInternetAccountService {
     }
     public List<UserInternetAccount> getEntriesForUser(String username) {
         return accountDatabase.findByUser_Username(username);
+    }
+
+    public boolean isDuplicateURL(String URL, String username){
+        return accountDatabase.existsByURLAndUser_Username(URL, username);
     }
 }
