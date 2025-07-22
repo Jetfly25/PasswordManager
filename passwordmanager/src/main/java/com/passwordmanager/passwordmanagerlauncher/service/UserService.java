@@ -31,7 +31,7 @@ public class UserService {
     public boolean deleteUser(String username) {
         Users user = userDatabase.findByUsername(username);
         if (user != null) {
-            accountService.removeAllPasswords();
+            accountService.removePasswordsForUser(username);
             userDatabase.delete(user);
             return true;
         }

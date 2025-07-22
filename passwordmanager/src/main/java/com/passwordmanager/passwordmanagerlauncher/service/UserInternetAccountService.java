@@ -51,9 +51,9 @@ public class UserInternetAccountService {
         return accountDatabase.findByURLAndUser_Username(URL, username);
     }
 
-    public void removeAllPasswords(){
-        List<UserInternetAccount> accounts = getAllEntries();
-        for (UserInternetAccount entry : accounts){
+    public void removePasswordsForUser(String username) {
+        List<UserInternetAccount> accounts = accountDatabase.findByUser_Username(username);
+        for (UserInternetAccount entry : accounts) {
             accountDatabase.delete(entry);
         }
     }
