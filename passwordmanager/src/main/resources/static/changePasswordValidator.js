@@ -81,3 +81,5 @@ function checkPasswordsSame(){
 }
 document.getElementById("newPassword").addEventListener("input", checkPasswordsSame);
 document.getElementById("oldPassword").addEventListener("input", checkPasswordsSame);
+document.getElementById("confirmPassword").addEventListener("input", validateNewPassword);
+document.getElementById("newPassword").addEventListener("input", validateNewPassword);
