@@ -15,7 +15,7 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/login", "/register", "/styles.css", "/h2-console/**", "/passwordValidator.js", "/changePasswordValidator.js", "/addPasswordValidator.js").permitAll()
+				.requestMatchers("/login", "/register", "/styles.css", "/passwordValidator.js", "/changePasswordValidator.js", "/addPasswordValidator.js").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin(form -> form
@@ -31,12 +31,7 @@ public class SecurityConfig{
 			.invalidateHttpSession(true)
 			.deleteCookies("JSESSIONID")
 			.permitAll()
-			)
-
-			// This will be removed once completed testing
-			.headers((headers) -> headers
-                .frameOptions().sameOrigin()
-            );	
+			);
 
 		return http.build();
 	}
