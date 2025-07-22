@@ -158,8 +158,8 @@ public class UserController {
     }
 
     @PostMapping("/view-password")
-    public String viewUserAccountPassword(@RequestParam String URL, HttpSession session) throws Exception {
-        UserInternetAccount entry = accountService.getPasswordEntryByURL(URL);
+    public String viewUserAccountPassword(@RequestParam String URL, HttpSession session, Principal principal) throws Exception {
+        UserInternetAccount entry = accountService.getPasswordEntryByURL(URL, principal.getName());
         String decryptedPassword = Encryption.decryptPassword(entry.getPassword());
         entry.setPassword(decryptedPassword);
         session.setAttribute("currentEntry", entry);

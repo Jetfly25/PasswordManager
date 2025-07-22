@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.passwordmanager.passwordmanagerlauncher.user.UserInternetAccount;
 
 public interface UserInternetAccountDatabase extends JpaRepository<UserInternetAccount, Long>{
-    UserInternetAccount findByURL(String URL);
+    UserInternetAccount findByURLAndUser_Username(String URL, String username);
     List<UserInternetAccount> findByUser_Username(String username);
 }

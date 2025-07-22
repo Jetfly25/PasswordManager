@@ -43,8 +43,8 @@ public class UserInternetAccountService {
         return accountDatabase.findById(ID).orElse(null);
     }
 
-    public UserInternetAccount getPasswordEntryByURL(String URL) {
-        return accountDatabase.findByURL(URL);
+    public UserInternetAccount getPasswordEntryByURL(String URL, String username) {
+        return accountDatabase.findByURLAndUser_Username(URL, username);
     }
 
     public void removeAllPasswords(){
