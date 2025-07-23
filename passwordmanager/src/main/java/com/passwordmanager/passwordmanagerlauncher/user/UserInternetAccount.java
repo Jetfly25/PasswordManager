@@ -20,6 +20,8 @@ public class UserInternetAccount {
     @ManyToOne
     private Users user;
 
+    public UserInternetAccount() {}
+
     public UserInternetAccount(String URL, String username, String password){
         this.URL = URL;
         this.username = username;

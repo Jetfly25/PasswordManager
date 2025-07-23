@@ -15,6 +15,8 @@ public class Users {
     private String username;
     private String password;
 
+    public Users() {}
+
     public Users(String username, String password){
         this.username = username;
         this.password = password;
