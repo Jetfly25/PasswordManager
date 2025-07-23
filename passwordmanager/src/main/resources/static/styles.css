@@ -48,11 +48,6 @@ ul {
     margin-left: 220px;
 }
 
-.button-link:hover {
-    color: white;
-    background-color: #0056b3;
-}
-
 .page-container {
     display: flex;
     justify-content: center;
@@ -111,10 +106,6 @@ button:disabled {
     cursor: not-allowed;
 }
 
-button + button {
-    margin-top: 12px;
-}
-
 .button-group {
     margin: 0 auto;
     display: block;
@@ -139,33 +130,6 @@ button + button {
 .homepage-table thead {
     background-color: #007bff;
     color: white;
-}
-
-.action-link {
-    color: #007bff;
-    font-weight: bold;
-}
-
-.link-container a {
-    margin-right: 20px;
-    text-decoration: none;
-    color: #007bff;
-}
-
-.link-container a:hover {
-    text-decoration: underline;
-}
-
-.link-container a.delete-account {
-    color: red;
-}
-
-.homepage-table a {
-    color: #007bff;
-    text-decoration: none;
-}
-.homepage-table a:hover {
-    text-decoration: underline;
 }
 
 .delete-account-button{
