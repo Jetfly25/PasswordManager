@@ -16,10 +16,12 @@ public class AuthService implements UserDetailsService {
     @Autowired
     private UserDatabase userDatabase;
 
+    // This method simply uses spring security's built-in login function to authenticate a user, instead of a custom made one
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users user = userDatabase.findByUsername(username);
 
+        // Return a nonexistant or "fake" user if the user does not exist
         if (user == null){
             return User.builder()
                 .username("guest")

@@ -47,6 +47,7 @@ public class UserController {
     public String register() {
         return "register";
     }
+
     @GetMapping("/home")
     public String home(Model model, Principal principal) {
         String username = principal.getName();
@@ -117,6 +118,7 @@ public class UserController {
         redirectAttributes.addFlashAttribute("message", "Successfully saved new password!");
         return "redirect:/home";
     }
+    
     @PostMapping("/generate-new-password")
     public String generatePassword(String URL, String username, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeUppercase, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeNumbers, @RequestParam(value = "includeUppercase", required = false, defaultValue = "false") boolean includeSpecial, RedirectAttributes redirectAttributes, Principal principal) throws Exception {
         String password = generatePassword.generateRandomPassword(includeUppercase, includeNumbers, includeSpecial);
@@ -176,5 +178,4 @@ public class UserController {
         session.setAttribute("currentEntry", entry);
         return "redirect:/view-password";
     }
-
 }

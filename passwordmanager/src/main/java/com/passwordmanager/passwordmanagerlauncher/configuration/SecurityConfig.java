@@ -14,6 +14,7 @@ public class SecurityConfig{
     @Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
+			// .css and .js files will not work unless permitted by spring security
 			.authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/login", "/register", "/styles.css", "/passwordValidator.js", "/changePasswordValidator.js", "/addPasswordValidator.js").permitAll()
 				.anyRequest().authenticated()

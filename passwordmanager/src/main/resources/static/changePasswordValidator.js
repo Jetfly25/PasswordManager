@@ -1,13 +1,13 @@
 function checkNewPasswordStrength() {
     const newPassword = document.getElementById("newPassword").value;
     const strengthIndicator = document.getElementById("passwordStrength");
+    const containsWhitespace = (str) => /\s/.test(str);
 
     let isValidPasswordLength = false;
     let isValidLetter = false;
     let isValidNumber = false;
     let isValidSpecialChar = false;
     let hasWhiteSpace = false;
-    const containsWhitespace = (str) => /\s/.test(str);
     
     if (newPassword.length >= 8) {
         isValidPasswordLength = true;
