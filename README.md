@@ -18,4 +18,4 @@ If the .jar is not in the same directory, then do: `java -jar "PATH_TO_JAR_FILE"
 
 When you run the file, a new directory called "data" will be created in the same place as the .jar file. In that directory, there is an .mv.db file. This file represents the database that contains all user data saved in the password manager. No data will be stored when you first run it, and it will not transfer to other database files.
 
-You can also clone this repository to your preferred IDE with `git clone https://github.com/Jetfly25/PasswordManager.git`, then switch your directory using `cd passwordmanager`, and run the .jar file there using the same command as before.
+You can also clone this repository with `git clone https://github.com/Jetfly25/PasswordManager.git`, then switch your directory using `cd passwordmanager`, and run the .jar file there using the same command as before.
