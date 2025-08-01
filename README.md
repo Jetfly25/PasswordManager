@@ -12,7 +12,7 @@ The program uses Spring Boot from the Spring framework, which is built with Java
 **Note: All passwords are hashed/encrypted. However, for the purposes of this project, please do NOT use any real passwords when using this program. Please use "fake" passwords, or ones you never use in a real application.**
 
 # How to run this program
-Download the .jar file in this repository as a raw file. You can access the file [here](https://github.com/Jetfly25/PasswordManager/blob/main/passwordmanager/passwordmanager.jar). Put the .jar file somewhere accessible. Then open a terminal window and type this into your terminal window: `java -jar passwordmanager.jar`. 
+Download the .jar file in this repository as a raw file. You can access the file [here](https://github.com/Jetfly25/PasswordManager/blob/main/passwordmanager/passwordmanager.jar). Put the .jar file somewhere accessible. Then open a terminal window and type this into your terminal window: `java -jar passwordmanager.jar`. Then, visit `http://localhost:8080/` to see the program running.
 
 If the .jar is not in the same directory, then do: `java -jar "PATH_TO_JAR_FILE"`, replacing the "PATH_TO_JAR_FILE" with the path to the .jar file you downloaded. 
 
